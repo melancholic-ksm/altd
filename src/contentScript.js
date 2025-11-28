@@ -25,8 +25,8 @@ const uiState = {
 
 // Check if extension is disabled for current context
 async function checkDisabledState() {
-  const { disabledPages = [], disabledSites = [], disabledUntil = 0 } = 
-    await chrome.storage.local.get(["disabledPages", "disabledSites", "disabledUntil"]);
+  const { disabledPages = [], disabledSites = [], disabledUntil = 0, sessionDisabled = {} } = 
+    await chrome.storage.local.get(["disabledPages", "disabledSites", "disabledUntil", "sessionDisabled"]);
   
   const currentUrl = window.location.href;
   const currentHost = window.location.hostname;
@@ -34,6 +34,12 @@ async function checkDisabledState() {
   
   // Check global disable timer
   if (disabledUntil > now) {
+    uiState.isDisabled = true;
+    return true;
+  }
+  
+  // Check session disable for current site
+  if (sessionDisabled[currentHost] && sessionDisabled[currentHost] > now) {
     uiState.isDisabled = true;
     return true;
   }
@@ -85,6 +91,17 @@ async function disableForTime(minutes) {
   hidePanel();
   const label = formatDuration(minutes);
   showStatus(`Disabled for ${label}`, "info");
+}
+
+// Disable for this session - 30 min for current site only
+async function disableForSession() {
+  const currentHost = window.location.hostname;
+  const { sessionDisabled = {} } = await chrome.storage.local.get("sessionDisabled");
+  sessionDisabled[currentHost] = Date.now() + (30 * 60 * 1000); // 30 minutes
+  await chrome.storage.local.set({ sessionDisabled });
+  uiState.isDisabled = true;
+  hidePanel();
+  showStatus(`Disabled on ${currentHost} for 30 min`, "info");
 }
 
 function formatDuration(minutes) {
@@ -226,17 +243,21 @@ async function reEnableExtension() {
   const currentUrl = window.location.href;
   const currentHost = window.location.hostname;
   
-  const { disabledPages = [], disabledSites = [] } = 
-    await chrome.storage.local.get(["disabledPages", "disabledSites"]);
+  const { disabledPages = [], disabledSites = [], sessionDisabled = {} } = 
+    await chrome.storage.local.get(["disabledPages", "disabledSites", "sessionDisabled"]);
   
   // Remove current page/site from disabled lists
   const newPages = disabledPages.filter(p => p !== currentUrl);
   const newSites = disabledSites.filter(s => s !== currentHost);
   
+  // Remove current host from session disabled
+  delete sessionDisabled[currentHost];
+  
   await chrome.storage.local.set({ 
     disabledPages: newPages, 
     disabledSites: newSites,
-    disabledUntil: 0 
+    disabledUntil: 0,
+    sessionDisabled
   });
   
   uiState.isDisabled = false;
@@ -499,6 +520,7 @@ panel.innerHTML = `
             <div class="alt-d-minimize-wrap">
                 <button type="button" class="alt-d-minimize-btn" data-action="minimize" title="Minimize / Disable options">−</button>
                 <div class="alt-d-disable-menu">
+                    <button type="button" data-action="disable-session">Disable for this session (30m)</button>
                     <button type="button" data-action="disable-page">Disable for this page</button>
                     <button type="button" data-action="disable-site">Disable for this site</button>
                     <div class="alt-d-time-menu">
@@ -629,6 +651,8 @@ panel.innerHTML = `
       chrome.runtime.sendMessage({ type: "OPEN_SHORTCUTS" });
     } else if (action === "minimize") {
       panel.classList.toggle("minimized");
+    } else if (action === "disable-session") {
+      disableForSession();
     } else if (action === "disable-page") {
       disableForPage();
     } else if (action === "disable-site") {
