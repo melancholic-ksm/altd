@@ -122,13 +122,15 @@ footer button {
   min-width: 100px;
 }
 
-#tutorial-btn {
+#tutorial-btn,
+#options-full-btn {
   flex-basis: 100%;
   background: linear-gradient(135deg, #39ff14, #b4ff64);
   color: #022727;
 }
 
-#tutorial-btn:hover {
+#tutorial-btn:hover,
+#options-full-btn:hover {
   opacity: 0.9;
   box-shadow: 0 4px 12px rgba(57, 255, 20, 0.4);
 }
