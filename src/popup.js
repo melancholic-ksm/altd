@@ -3,12 +3,14 @@ const modelName = document.getElementById("model-name");
 const toneName = document.getElementById("tone-name");
 const refreshBtn = document.getElementById("refresh-btn");
 const optionsBtn = document.getElementById("options-btn");
+const optionsFullBtn = document.getElementById("options-full-btn");
 const shortcutsBtn = document.getElementById("open-shortcuts");
 const tutorialBtn = document.getElementById("tutorial-btn");
 const privacyLink = document.getElementById("privacy-link");
 
 refreshBtn?.addEventListener("click", loadState);
 optionsBtn?.addEventListener("click", () => chrome.runtime.openOptionsPage());
+optionsFullBtn?.addEventListener("click", () => chrome.runtime.openOptionsPage());
 shortcutsBtn?.addEventListener("click", () => chrome.tabs.create({ url: "chrome://extensions/shortcuts" }));
 tutorialBtn?.addEventListener("click", () => chrome.tabs.create({ url: chrome.runtime.getURL("src/tutorial.html") }));
 privacyLink?.addEventListener("click", (e) => {
