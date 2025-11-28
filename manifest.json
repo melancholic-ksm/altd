@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Alt-D Smart Fix",
+  "description": "Polish any highlighted text with a single Alt+D using Groq LLMs (GPT-OSS 120B, Qwen3, DeepSeek, Kimi, or Compound).",
+  "version": "0.1.0",
+  "permissions": ["storage", "scripting", "activeTab"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/contentScript.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "fix-selection": {
+      "suggested_key": {
+        "default": "Alt+D",
+        "mac": "Alt+D"
+      },
+      "description": "Send the current selection to Groq for polishing"
+    }
+  },
+  "options_ui": {
+    "page": "src/options.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_title": "Alt-D Smart Fix",
+    "default_popup": "src/popup.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["src/assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
