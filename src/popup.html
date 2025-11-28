@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Alt-D Panel</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <h1>Alt-D</h1>
+          <p>Highlight text (Select following text), press Alt+D.</p>
+        </div>
+        <button id="options-btn" title="Open full settings">⚙️</button>
+      </header>
+
+      <section id="status-card">
+        <div class="row">
+          <span class="label">API key</span>
+          <span id="api-status" class="chip">Checking…</span>
+        </div>
+        <div class="row">
+          <span class="label">Model</span>
+          <span id="model-name" class="value">—</span>
+        </div>
+        <div class="row">
+          <span class="label">Tone</span>
+          <span id="tone-name" class="value">—</span>
+        </div>
+      </section>
+
+      <section id="tip">
+        <p>
+          Works in inputs, textareas, and rich editors. If Chrome steals Alt+D, rebind the
+          shortcut under <strong>chrome://extensions/shortcuts</strong>.
+        </p>
+      </section>
+
+      <footer>
+        <button id="tutorial-btn" class="primary-btn">📖 Tutorial</button>
+        <button id="refresh-btn">Refresh</button>
+        <button id="open-shortcuts">Shortcuts</button>
+      </footer>
+      
+      <div class="popup-links">
+        <a href="https://github.com/melancholic-ksm/altd" target="_blank" id="github-link">🐙 GitHub</a>
+        <a href="#" id="privacy-link">🔒 Privacy</a>
+      </div>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

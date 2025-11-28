@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - Alt-D Smart Fix</title>
+  <link rel="stylesheet" href="privacy.css">
+</head>
+<body>
+  <div class="privacy-container">
+    <header class="privacy-header">
+      <h1>🔒 Privacy Policy</h1>
+      <p class="subtitle">Alt-D Smart Fix</p>
+      <p class="last-updated">Last Updated: November 28, 2024</p>
+    </header>
+
+    <nav class="quick-nav">
+      <a href="#overview">Overview</a>
+      <a href="#data-collection">Data Collection</a>
+      <a href="#network">Network Requests</a>
+      <a href="#api-key">API Key Security</a>
+      <a href="#permissions">Permissions</a>
+      <a href="#rights">Your Rights</a>
+    </nav>
+
+    <main class="privacy-content">
+      <section id="overview" class="privacy-section">
+        <h2>📋 Overview</h2>
+        <div class="tldr-box">
+          <strong>TL;DR:</strong> We don't collect, store, or share your personal data. Everything stays on your device.
+        </div>
+        <p>Alt-D Smart Fix is committed to protecting your privacy. This policy explains how we handle your data when you use our Chrome extension.</p>
+      </section>
+
+      <section id="data-collection" class="privacy-section">
+        <h2>📊 Data Collection</h2>
+        
+        <h3>What We DON'T Collect</h3>
+        <ul class="dont-list">
+          <li>❌ <strong>Personal Information</strong> — No names, emails, or identifiers</li>
+          <li>❌ <strong>Browsing History</strong> — We don't track what sites you visit</li>
+          <li>❌ <strong>Analytics</strong> — No Google Analytics, telemetry, or usage tracking</li>
+          <li>❌ <strong>Your Text</strong> — We never store the text you fix</li>
+          <li>❌ <strong>Cookies</strong> — We don't use tracking cookies</li>
+        </ul>
+
+        <h3>What We DO Store (Locally Only)</h3>
+        <p>The following data is stored <strong>only on your device</strong> using Chrome's <code>chrome.storage.local</code> API:</p>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Purpose</th>
+              <th>Synced to Cloud?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Groq API Key</td>
+              <td>Authenticate with Groq API</td>
+              <td><span class="badge no">❌ No</span></td>
+            </tr>
+            <tr>
+              <td>Settings</td>
+              <td>Model, temperature, tone preferences</td>
+              <td><span class="badge no">❌ No</span></td>
+            </tr>
+            <tr>
+              <td>Model Cache</td>
+              <td>Cache available models for 1 hour</td>
+              <td><span class="badge no">❌ No</span></td>
+            </tr>
+            <tr>
+              <td>Disabled Pages/Sites</td>
+              <td>Remember where you disabled Alt-D</td>
+              <td><span class="badge no">❌ No</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="note">We explicitly use <code>chrome.storage.local</code>, NOT <code>chrome.storage.sync</code>. Your data is never uploaded to Google's cloud sync servers.</p>
+      </section>
+
+      <section id="network" class="privacy-section">
+        <h2>🌐 Network Requests</h2>
+        
+        <h3>Groq API Calls</h3>
+        <p>When you use Alt-D to fix text, the extension makes a direct API call to Groq:</p>
+        <div class="code-block">
+          <code>https://api.groq.com/openai/v1/chat/completions</code>
+        </div>
+        
+        <div class="two-columns">
+          <div class="column">
+            <h4>✅ Data Sent</h4>
+            <ul>
+              <li>Your selected text (for processing)</li>
+              <li>Surrounding context (for better understanding)</li>
+              <li>Your API key (for authentication)</li>
+              <li>Model and temperature settings</li>
+            </ul>
+          </div>
+          <div class="column">
+            <h4>❌ Data NOT Sent</h4>
+            <ul>
+              <li>Your identity or personal information</li>
+              <li>Your browsing history</li>
+              <li>Any data to third parties</li>
+              <li>Any data to our servers</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="api-key" class="privacy-section">
+        <h2>🔐 API Key Security</h2>
+        <p>Your Groq API key is:</p>
+        <ul class="check-list">
+          <li>✅ Stored only in <code>chrome.storage.local</code> on your device</li>
+          <li>✅ Never synced to the cloud</li>
+          <li>✅ Never sent to any server except Groq's API</li>
+          <li>✅ Never logged or stored by us</li>
+          <li>✅ Never shared with third parties</li>
+        </ul>
+        <div class="warning-box">
+          <strong>⚠️ Recommendation:</strong> Treat your API key like a password. Don't share it publicly.
+        </div>
+      </section>
+
+      <section id="permissions" class="privacy-section">
+        <h2>👁️ Permissions Explained</h2>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Permission</th>
+              <th>Why We Need It</th>
+              <th>What We DON'T Do</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>storage</code></td>
+              <td>Save settings and API key locally</td>
+              <td>We don't sync or upload your data</td>
+            </tr>
+            <tr>
+              <td><code>scripting</code></td>
+              <td>Inject content script for text selection</td>
+              <td>We don't read pages you don't interact with</td>
+            </tr>
+            <tr>
+              <td><code>activeTab</code></td>
+              <td>Replace text in the current tab</td>
+              <td>We don't access other tabs</td>
+            </tr>
+            <tr>
+              <td><code>&lt;all_urls&gt;</code></td>
+              <td>Work on any website</td>
+              <td>We don't track your browsing</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="never" class="privacy-section">
+        <h2>🚫 What We'll Never Do</h2>
+        <ul class="never-list">
+          <li><strong>Sell Your Data</strong> — We don't collect data, so there's nothing to sell</li>
+          <li><strong>Track You</strong> — No analytics, fingerprinting, or tracking pixels</li>
+          <li><strong>Store Your Text</strong> — Your writing stays private</li>
+          <li><strong>Share with Third Parties</strong> — No data sharing agreements</li>
+          <li><strong>Use for Advertising</strong> — No ads, ever</li>
+        </ul>
+      </section>
+
+      <section id="third-party" class="privacy-section">
+        <h2>🔄 Third-Party Services</h2>
+        <p>The only third-party service Alt-D uses is:</p>
+        <div class="service-card">
+          <h3>Groq (groq.com)</h3>
+          <ul>
+            <li><strong>Purpose:</strong> AI model inference for text fixing</li>
+            <li><strong>Data Shared:</strong> Your selected text and API key</li>
+            <li><strong>Their Privacy Policy:</strong> <a href="https://groq.com/privacy" target="_blank">groq.com/privacy</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="rights" class="privacy-section">
+        <h2>🔧 Your Rights</h2>
+        <p>You have full control over your data:</p>
+        
+        <h3>View Your Data</h3>
+        <p>All settings are visible in the Alt-D options page.</p>
+        
+        <h3>Delete Your Data</h3>
+        <ol>
+          <li>Go to <code>chrome://extensions</code></li>
+          <li>Find "Alt-D Smart Fix"</li>
+          <li>Click "Remove"</li>
+          <li>All local data is automatically deleted</li>
+        </ol>
+      </section>
+
+      <section id="summary" class="privacy-section">
+        <h2>✅ Summary</h2>
+        <table class="data-table summary-table">
+          <tbody>
+            <tr>
+              <td>Do you collect personal data?</td>
+              <td><strong>No</strong></td>
+            </tr>
+            <tr>
+              <td>Do you track browsing?</td>
+              <td><strong>No</strong></td>
+            </tr>
+            <tr>
+              <td>Do you store my text?</td>
+              <td><strong>No</strong></td>
+            </tr>
+            <tr>
+              <td>Is my API key safe?</td>
+              <td><strong>Yes, local only</strong></td>
+            </tr>
+            <tr>
+              <td>Do you share data?</td>
+              <td><strong>No</strong></td>
+            </tr>
+            <tr>
+              <td>Can I delete my data?</td>
+              <td><strong>Yes, uninstall removes all</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="contact" class="privacy-section">
+        <h2>📧 Contact</h2>
+        <p>For privacy questions or concerns:</p>
+        <ul>
+          <li><strong>GitHub:</strong> <a href="https://github.com/melancholic-ksm/altd" target="_blank">github.com/melancholic-ksm/altd</a></li>
+          <li><strong>Issues:</strong> <a href="https://github.com/melancholic-ksm/altd/issues" target="_blank">Report an issue</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="privacy-footer">
+      <p><strong>Your privacy matters. Alt-D is built to respect it.</strong></p>
+      <div class="footer-links">
+        <a href="options.html">⚙️ Settings</a>
+        <a href="tutorial.html">📖 Tutorial</a>
+        <a href="https://github.com/melancholic-ksm/altd" target="_blank">🐙 GitHub</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
