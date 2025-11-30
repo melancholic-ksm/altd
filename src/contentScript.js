@@ -154,6 +154,14 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     // Allow re-enabling from popup or options
     reEnableExtension();
   }
+  
+  if (message?.type === "TOGGLE_PANEL") {
+    if (message.show) {
+      showPanel();
+    } else {
+      hidePanel();
+    }
+  }
 });
 
 // Fallback in case the command shortcut is remapped or unavailable.
@@ -665,9 +673,12 @@ panel.innerHTML = `
     }
   });
 
-  // Check disabled state on load
-  checkDisabledState().then(isDisabled => {
-    if (isDisabled) {
+  // Check disabled state and panel visibility on load
+  Promise.all([
+    checkDisabledState(),
+    chrome.storage.local.get("showFloatingPanel")
+  ]).then(([isDisabled, { showFloatingPanel }]) => {
+    if (isDisabled || showFloatingPanel === false) {
       panel.classList.add("hidden");
     }
   });
