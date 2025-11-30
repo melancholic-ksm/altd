@@ -7,12 +7,27 @@ const optionsFullBtn = document.getElementById("options-full-btn");
 const shortcutsBtn = document.getElementById("open-shortcuts");
 const tutorialBtn = document.getElementById("tutorial-btn");
 const privacyLink = document.getElementById("privacy-link");
+const panelToggle = document.getElementById("panel-toggle");
 
 refreshBtn?.addEventListener("click", loadState);
 optionsBtn?.addEventListener("click", () => chrome.runtime.openOptionsPage());
 optionsFullBtn?.addEventListener("click", () => chrome.runtime.openOptionsPage());
 shortcutsBtn?.addEventListener("click", () => chrome.tabs.create({ url: "chrome://extensions/shortcuts" }));
 tutorialBtn?.addEventListener("click", () => chrome.tabs.create({ url: chrome.runtime.getURL("src/tutorial.html") }));
+
+// Floating panel toggle
+panelToggle?.addEventListener("change", async () => {
+  const showPanel = panelToggle.checked;
+  await chrome.storage.local.set({ showFloatingPanel: showPanel });
+  
+  // Notify all tabs to show/hide panel
+  const tabs = await chrome.tabs.query({});
+  for (const tab of tabs) {
+    if (tab.id) {
+      chrome.tabs.sendMessage(tab.id, { type: "TOGGLE_PANEL", show: showPanel }).catch(() => {});
+    }
+  }
+});
 privacyLink?.addEventListener("click", (e) => {
   e.preventDefault();
   chrome.tabs.create({ url: chrome.runtime.getURL("src/privacy.html") });
@@ -26,9 +41,14 @@ async function loadState() {
     apiChip.className = "chip";
   }
 
-  const stored = await chrome.storage.local.get(["settings", "modelCache"]);
+  const stored = await chrome.storage.local.get(["settings", "modelCache", "showFloatingPanel"]);
   const settings = stored.settings || {};
   const models = stored.modelCache?.models || [];
+  
+  // Load panel toggle state (default to true/shown)
+  if (panelToggle) {
+    panelToggle.checked = stored.showFloatingPanel !== false;
+  }
 
   if (apiChip) {
     if (settings.apiKey) {
