@@ -215,15 +215,7 @@ altd/
     │
     ├── popup.html          # Toolbar popup
     ├── popup.js            # Popup logic
-    ├── popup.css           # Popup styles
-    │
-    └── assets/             # Images
-        ├── find-extension.png
-        ├── set-shortcut.png
-        ├── groq-signup.png
-        ├── create-api-key.png
-        ├── copy-api-key.png
-        └── paste-api-key.png
+    └── popup.css           # Popup styles
 
 External pages hosted at https://melancholic-ksm.github.io/altd:
 ├── index.html              # Main documentation
@@ -430,3 +422,4 @@ SOFTWARE.
 [🌐 Website](https://melancholic-ksm.github.io/altd) • [Report Bug](https://github.com/melancholic-ksm/altd/issues) • [Request Feature](https://github.com/melancholic-ksm/altd/issues) • [Contribute](https://github.com/melancholic-ksm/altd/pulls)
 
 </div>
+
