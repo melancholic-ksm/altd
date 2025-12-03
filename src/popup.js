@@ -6,14 +6,13 @@ const optionsBtn = document.getElementById("options-btn");
 const optionsFullBtn = document.getElementById("options-full-btn");
 const shortcutsBtn = document.getElementById("open-shortcuts");
 const tutorialBtn = document.getElementById("tutorial-btn");
-const privacyLink = document.getElementById("privacy-link");
 const panelToggle = document.getElementById("panel-toggle");
 
 refreshBtn?.addEventListener("click", loadState);
 optionsBtn?.addEventListener("click", () => chrome.runtime.openOptionsPage());
 optionsFullBtn?.addEventListener("click", () => chrome.runtime.openOptionsPage());
 shortcutsBtn?.addEventListener("click", () => chrome.tabs.create({ url: "chrome://extensions/shortcuts" }));
-tutorialBtn?.addEventListener("click", () => chrome.tabs.create({ url: chrome.runtime.getURL("src/tutorial.html") }));
+tutorialBtn?.addEventListener("click", () => chrome.tabs.create({ url: "https://melancholic-ksm.github.io/altd/tutorial.html" }));
 
 // Floating panel toggle
 panelToggle?.addEventListener("change", async () => {
@@ -27,10 +26,6 @@ panelToggle?.addEventListener("change", async () => {
       chrome.tabs.sendMessage(tab.id, { type: "TOGGLE_PANEL", show: showPanel }).catch(() => {});
     }
   }
-});
-privacyLink?.addEventListener("click", (e) => {
-  e.preventDefault();
-  chrome.tabs.create({ url: chrome.runtime.getURL("src/privacy.html") });
 });
 
 void loadState();

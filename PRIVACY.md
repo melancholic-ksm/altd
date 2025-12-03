@@ -1,6 +1,8 @@
 # Privacy Policy for Alt-D Smart Fix
 
-**Last Updated:** November 28, 2024
+**Last Updated:** December 3, 2025
+
+**Website:** [https://melancholic-ksm.github.io/altd](https://melancholic-ksm.github.io/altd)
 
 ---
 
@@ -81,20 +83,6 @@ Your Groq API key is:
 
 ---
 
-## 🖥️ Local Processing
-
-Alt-D processes everything locally except for the AI model inference:
-
-| Process | Location |
-|---------|----------|
-| Text selection detection | Your browser (local) |
-| Settings management | Your browser (local) |
-| UI rendering | Your browser (local) |
-| Keyboard shortcut handling | Your browser (local) |
-| **AI text processing** | **Groq's servers** |
-
----
-
 ## 👁️ Permissions Explained
 
 Alt-D requests the following Chrome permissions:
@@ -110,13 +98,11 @@ Alt-D requests the following Chrome permissions:
 
 ## 🚫 What We'll Never Do
 
-1. **Sell Your Data** — We don't collect data, so there's nothing to sell
-2. **Track You** — No analytics, fingerprinting, or tracking pixels
-3. **Store Your Text** — Your writing stays private
-4. **Share with Third Parties** — No data sharing agreements
-5. **Use for Advertising** — No ads, ever
-6. **Mine Cryptocurrency** — No hidden miners
-7. **Send Spam** — We don't collect emails
+- ❌ **Sell Your Data** — We don't collect data, so there's nothing to sell
+- ❌ **Track You** — No analytics, fingerprinting, or tracking pixels
+- ❌ **Store Your Text** — Your writing stays private
+- ❌ **Share with Third Parties** — No data sharing agreements
+- ❌ **Use for Advertising** — No ads, ever
 
 ---
 
@@ -134,21 +120,23 @@ We encourage you to review Groq's privacy policy to understand how they handle d
 
 ---
 
+## 🌐 Website Privacy
+
+This documentation website (melancholic-ksm.github.io/altd) also respects your privacy:
+
+- ❌ **No Analytics** — We don't use Google Analytics or any tracking
+- ❌ **No Cookies** — We don't set any cookies
+- ❌ **No Data Collection** — We don't collect any visitor data
+- ❌ **No Third-Party Scripts** — No trackers, pixels, or external scripts that monitor you
+- ✅ **Static Hosting** — Hosted on GitHub Pages with no server-side processing
+
+**TL;DR:** This website is a simple static site. We don't track, analyze, or collect any information about your visit.
+
+---
+
 ## 👶 Children's Privacy
 
 Alt-D is not intended for children under 13. We do not knowingly collect any information from children.
-
----
-
-## 🌍 International Users
-
-Alt-D is a client-side extension that stores data locally. Your data remains on your device regardless of your location. API calls to Groq are subject to Groq's data handling practices.
-
----
-
-## 🔧 Your Rights
-
-You have full control over your data:
 
 ### View Your Data
 All settings are visible in the Alt-D options page.
@@ -159,29 +147,14 @@ All settings are visible in the Alt-D options page.
 3. Click "Remove"
 4. All local data is automatically deleted
 
-### Export Your Data
-Settings can be viewed in Chrome DevTools:
-```javascript
-chrome.storage.local.get(null, console.log)
-```
-
----
-
-## 📝 Changes to This Policy
-
-If we update this privacy policy, we will:
-1. Update the "Last Updated" date
-2. Describe changes in our GitHub releases
-3. For significant changes, show a notification in the extension
-
 ---
 
 ## 📧 Contact
 
 For privacy questions or concerns:
 
-- **GitHub Issues:** [github.com/melancholic-ksm/altd/issues](https://github.com/melancholic-ksm/altd/issues)
-- **Repository:** [github.com/melancholic-ksm/altd](https://github.com/melancholic-ksm/altd)
+- 🐙 **GitHub:** [github.com/melancholic-ksm/altd](https://github.com/melancholic-ksm/altd)
+- 🐛 **Issues:** [Report an issue](https://github.com/melancholic-ksm/altd/issues)
 
 ---
 
@@ -194,7 +167,6 @@ For privacy questions or concerns:
 | Do you store my text? | No |
 | Is my API key safe? | Yes, local only |
 | Do you share data? | No |
-| Do you use analytics? | No |
 | Can I delete my data? | Yes, uninstall removes all |
 
 ---
@@ -203,6 +175,6 @@ For privacy questions or concerns:
 
 **Your privacy matters. Alt-D is built to respect it.**
 
-[Back to README](README.md) • [View Source Code](https://github.com/melancholic-ksm/altd)
+[📖 Documentation](https://melancholic-ksm.github.io/altd) • [🚀 Tutorial](https://melancholic-ksm.github.io/altd/tutorial.html) • [🐙 GitHub](https://github.com/melancholic-ksm/altd) • [🏠 Portfolio](https://melancholic-ksm.github.io/)
 
 </div>

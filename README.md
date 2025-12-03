@@ -9,6 +9,8 @@
 
 **A powerful Chrome extension that fixes grammar, vocabulary, and style with a single keyboard shortcut using AI.**
 
+[🌐 Website](https://melancholic-ksm.github.io/altd) • [🐙 GitHub](https://github.com/melancholic-ksm/altd) • [📥 Download](https://github.com/melancholic-ksm/altd/archive/refs/heads/main.zip) • [🔑 Get Groq API Key](https://console.groq.com/keys) • [📖 Tutorial](https://melancholic-ksm.github.io/altd/tutorial.html)
+
 [Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Configuration](#%EF%B8%8F-configuration) • [Privacy](#-privacy) • [Contributing](#-contributing) • [License](#-license)
 
 </div>
@@ -199,7 +201,7 @@ Access settings via:
 ```
 altd/
 ├── manifest.json           # Chrome extension manifest (MV3)
-├── README.md               # This file
+├── README.md               # Documentation
 ├── PRIVACY.md              # Privacy policy
 ├── LICENSE                 # MIT License
 │
@@ -296,7 +298,7 @@ When a model fails (404, rate limit, overloaded), Alt-D automatically tries the 
 - ✅ **Direct API Calls** — Text goes directly to Groq, no intermediary servers
 - ✅ **Open Source** — Full transparency, audit the code yourself
 
-📄 **[Read Full Privacy Policy](PRIVACY.md)**
+📄 **[Read Full Privacy Policy](https://melancholic-ksm.github.io/altd/privacy.html)** | **[PRIVACY.md](PRIVACY.md)**
 
 ---
 
@@ -304,24 +306,20 @@ When a model fails (404, rate limit, overloaded), Alt-D automatically tries the 
 
 Contributions are welcome! Here's how you can help:
 
-### Bug Reports & Feature Requests
+### 🐛 Bug Reports
 
-1. Check [existing issues](https://github.com/melancholic-ksm/altd/issues)
-2. Create a new issue with:
-   - Clear description
-   - Steps to reproduce (for bugs)
-   - Expected vs actual behavior
-   - Screenshots if applicable
+- Check [existing issues](https://github.com/melancholic-ksm/altd/issues)
+- Create a new issue with clear description
+- Include steps to reproduce
+- Add screenshots if applicable
 
-### Pull Requests
+### ✨ Pull Requests
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Make your changes
-4. Test thoroughly
-5. Commit: `git commit -m 'Add amazing feature'`
-6. Push: `git push origin feature/amazing-feature`
-7. Open a Pull Request
+- Fork the repository
+- Create a feature branch
+- Make your changes
+- Test thoroughly
+- Open a Pull Request
 
 ### Development Setup
 
@@ -339,12 +337,12 @@ cd altd
 
 ## 📋 Roadmap
 
-- [ ] **History Panel** — Undo/redo previous fixes
-- [ ] **Streaming Responses** — Faster perceived latency
-- [ ] **Per-Site Overrides** — Custom settings for specific sites
-- [ ] **Context Menu** — Right-click to fix text
-- [ ] **Multiple Languages** — Support for non-English text
-- [ ] **Chrome Web Store** — Official release
+- ☐ **History Panel** — Undo/redo previous fixes
+- ☐ **Streaming Responses** — Faster perceived latency
+- ☐ **Per-Site Overrides** — Custom settings for specific sites
+- ☐ **Context Menu** — Right-click to fix text
+- ☐ **Multiple Languages** — Support for non-English text
+- ☐ **Chrome Web Store** — Official release
 
 ---
 
@@ -431,6 +429,6 @@ SOFTWARE.
 
 ⭐ Star this repo if you find it useful!
 
-[Report Bug](https://github.com/melancholic-ksm/altd/issues) • [Request Feature](https://github.com/melancholic-ksm/altd/issues) • [Contribute](https://github.com/melancholic-ksm/altd/pulls)
+[🌐 Website](https://melancholic-ksm.github.io/altd) • [Report Bug](https://github.com/melancholic-ksm/altd/issues) • [Request Feature](https://github.com/melancholic-ksm/altd/issues) • [Contribute](https://github.com/melancholic-ksm/altd/pulls)
 
 </div>

@@ -360,6 +360,16 @@ button[type="submit"]:hover {
   font-size: 1.1rem;
 }
 
+.link-btn.website-btn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #ffffff;
+}
+
+.link-btn.website-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
 .link-btn.tutorial-btn {
   background: linear-gradient(135deg, #39ff14, #b4ff64);
   color: #022727;
