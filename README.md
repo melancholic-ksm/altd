@@ -217,20 +217,18 @@ altd/
     ├── popup.js            # Popup logic
     ├── popup.css           # Popup styles
     │
-    ├── tutorial.html       # Setup tutorial page
-    ├── tutorial.js         # Tutorial navigation
-    ├── tutorial.css        # Tutorial styles
-    │
-    ├── privacy.html        # Privacy policy page
-    ├── privacy.css         # Privacy page styles
-    │
-    └── assets/             # Images for tutorial
+    └── assets/             # Images
         ├── find-extension.png
         ├── set-shortcut.png
         ├── groq-signup.png
         ├── create-api-key.png
         ├── copy-api-key.png
         └── paste-api-key.png
+
+External pages hosted at https://melancholic-ksm.github.io/altd:
+├── index.html              # Main documentation
+├── tutorial.html           # Setup tutorial
+└── privacy.html            # Privacy policy
 ```
 
 ---
