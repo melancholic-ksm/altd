@@ -1,61 +1,229 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Alt-D Panel</title>
-    <link rel="stylesheet" href="popup.css" />
-  </head>
-  <body>
-    <main>
-      <header>
-        <div>
-          <h1>Alt-D</h1>
-          <p>Highlight text (Select following text), press Alt+D.</p>
-        </div>
-        <button id="options-btn" title="Open full settings">⚙️</button>
-      </header>
+* {
+  box-sizing: border-box;
+}
 
-      <section id="status-card">
-        <div class="row">
-          <span class="label">API key</span>
-          <span id="api-status" class="chip">Checking…</span>
-        </div>
-        <div class="row">
-          <span class="label">Model</span>
-          <span id="model-name" class="value">—</span>
-        </div>
-        <div class="row">
-          <span class="label">Tone</span>
-          <span id="tone-name" class="value">—</span>
-        </div>
-        <div class="row">
-          <span class="label">Floating Panel</span>
-          <label class="toggle-switch">
-            <input type="checkbox" id="panel-toggle" checked>
-            <span class="toggle-slider"></span>
-          </label>
-        </div>
-      </section>
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #044343 0%, #022727 100%);
+  color: #e0f7f0;
+  min-width: 320px;
+  max-width: 360px;
+}
 
-      <section id="tip">
-        <p>
-          Works in inputs, textareas, and rich editors. If Chrome steals Alt+D, rebind the
-          shortcut under <strong>chrome://extensions/shortcuts</strong>.
-        </p>
-      </section>
+main {
+  padding: 16px;
+}
 
-      <footer>
-        <button id="tutorial-btn" class="primary-btn">📖 Tutorial</button>
-        <button id="options-full-btn" class="primary-btn">⚙️ Options</button>
-        <button id="refresh-btn">Refresh</button>
-        <button id="open-shortcuts">Shortcuts</button>
-      </footer>
-      
-      <div class="popup-links">
-        <a href="https://github.com/melancholic-ksm/altd" target="_blank" id="github-link">🐙 GitHub</a>
-        <a href="#" id="privacy-link">🔒 Privacy</a>
-      </div>
-    </main>
-    <script src="popup.js"></script>
-  </body>
-</html>
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #b4ff64;
+}
+
+header p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #94d3c4;
+}
+
+header button {
+  background: transparent;
+  border: 1px solid rgba(180, 255, 100, 0.2);
+  color: #e0f7f0;
+  font-size: 18px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+header button:hover {
+  background: rgba(57, 255, 20, 0.15);
+  border-color: #39ff14;
+}
+
+#status-card {
+  background: rgba(2, 39, 39, 0.6);
+  border: 1px solid rgba(180, 255, 100, 0.15);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+#status-card .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+}
+
+#status-card .row:not(:last-child) {
+  border-bottom: 1px solid rgba(180, 255, 100, 0.1);
+}
+
+#status-card .label {
+  font-size: 13px;
+  color: #94d3c4;
+}
+
+#status-card .value {
+  font-size: 13px;
+  color: #e0f7f0;
+  font-weight: 500;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chip {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-weight: 600;
+  background: rgba(180, 255, 100, 0.15);
+  color: #b4ff64;
+}
+
+.chip.ok {
+  background: rgba(57, 255, 20, 0.2);
+  color: #39ff14;
+}
+
+.chip.error {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(2, 39, 39, 0.8);
+  border: 1px solid rgba(180, 255, 100, 0.2);
+  transition: 0.3s;
+  border-radius: 24px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #94d3c4;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+  background: linear-gradient(135deg, #39ff14, #b4ff64);
+  border-color: #39ff14;
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(20px);
+  background-color: #022727;
+}
+
+#tip {
+  background: rgba(57, 255, 20, 0.08);
+  border: 1px solid rgba(57, 255, 20, 0.15);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+
+#tip p {
+  margin: 0;
+  font-size: 11px;
+  color: #94d3c4;
+  line-height: 1.5;
+}
+
+#tip strong {
+  color: #b4ff64;
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+footer button {
+  flex: 1;
+  min-width: 70px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(180, 255, 100, 0.2);
+  background: rgba(2, 39, 39, 0.6);
+  color: #e0f7f0;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+footer button:hover {
+  background: rgba(57, 255, 20, 0.15);
+  border-color: #39ff14;
+}
+
+footer button.primary-btn {
+  background: linear-gradient(135deg, #39ff14, #b4ff64);
+  border: none;
+  color: #022727;
+  font-weight: 600;
+}
+
+footer button.primary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(57, 255, 20, 0.3);
+}
+
+.popup-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(180, 255, 100, 0.1);
+}
+
+.popup-links a {
+  font-size: 12px;
+  color: #94d3c4;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.popup-links a:hover {
+  color: #b4ff64;
+}

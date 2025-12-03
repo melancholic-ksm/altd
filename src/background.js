@@ -191,7 +191,7 @@ chrome.runtime.onInstalled.addListener(async (details) => {
   
   // Open tutorial on first install
   if (details.reason === "install") {
-    chrome.tabs.create({ url: chrome.runtime.getURL("src/tutorial.html") });
+    chrome.tabs.create({ url: "https://melancholic-ksm.github.io/altd/tutorial.html" });
   }
 });
 
@@ -239,7 +239,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 
   if (message?.type === "OPEN_TUTORIAL") {
-    chrome.tabs.create({ url: chrome.runtime.getURL("src/tutorial.html") });
+    chrome.tabs.create({ url: "https://melancholic-ksm.github.io/altd/tutorial.html" });
     sendResponse({ ok: true });
     return false;
   }
