@@ -17,6 +17,7 @@
 
 ---
 
+![ALTD](https://res.cloudinary.com/dv3cp6bda/image/upload/v1764749927/ScreenRecording2025-12-03133547online-video-cutter.com-ezgif.com-video-to-gif-converter_ktcoy8.gif)
 ## 🎯 What is Alt-D?
 
 Alt-D Smart Fix is a Chrome extension that lets you **select any text** in any input field, textarea, or content-editable region, press **`Alt + D`**, and instantly rewrite it using state-of-the-art AI models from [Groq](https://groq.com).
@@ -422,4 +423,5 @@ SOFTWARE.
 [🌐 Website](https://melancholic-ksm.github.io/altd) • [Report Bug](https://github.com/melancholic-ksm/altd/issues) • [Request Feature](https://github.com/melancholic-ksm/altd/issues) • [Contribute](https://github.com/melancholic-ksm/altd/pulls)
 
 </div>
+
 
