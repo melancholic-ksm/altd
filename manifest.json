@@ -10,10 +10,10 @@
     "type": "module"
   },
     "icons": {
-    "16": "src/image.png",
-    "32": "src/image.png",
-    "48": "src/image.png",
-    "128": "src/image.png"
+    "16": "src/logo.jpg",
+    "32": "src/logo.jpg",
+    "48": "src/logo.jpg",
+    "128": "src/logo.jpg"
   },
   "content_scripts": [
     {
@@ -46,4 +46,5 @@
     }
   ]
 }
+
 
