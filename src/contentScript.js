@@ -12,7 +12,8 @@ const undoState = {
   end: null,
   range: null,         // For content-editable
   kind: null,
-  replacedLength: 0    // Length of the replacement text
+  replacedLength: 0,   // Length of the replacement text
+  fixedText: null      // The text we replaced TO (for detecting refine vs new selection)
 };
 
 const uiState = {
@@ -244,6 +245,7 @@ function resetUndoState() {
   undoState.kind = null;
   undoState.replacedLength = 0;
   undoState.newNode = null;
+  undoState.fixedText = null;
   selectionState.originalText = null;
 }
 
@@ -286,11 +288,16 @@ function captureSelection() {
     const value = active.value;
     const selectedText = value.slice(start, end);
     
-    // If this is the first fix (no undo available) or user selected different text,
-    // store as the original. If pressing Alt+D again on same location, keep original.
-    if (!undoState.canUndo || 
-        undoState.element !== active || 
-        undoState.start !== start) {
+    // Detect if user is REFINING (selecting the fixed text to improve it again).
+    // Refine = same element, same position, AND selected text matches what we fixed to.
+    // If refining, keep original. Otherwise, this is a new selection - update.
+    const isRefining = undoState.canUndo &&
+        undoState.element === active &&
+        undoState.start === start &&
+        undoState.end === end &&
+        selectedText === undoState.fixedText;
+
+    if (!isRefining) {
       selectionState.originalText = selectedText;
     }
     
@@ -315,8 +322,22 @@ function captureSelection() {
     const range = selection.getRangeAt(0).cloneRange();
     const text = selection.toString();
     
-    // Store original text on first fix
-    if (!undoState.canUndo) {
+    // Detect if user is REFINING (selecting the fixed text to improve it again).
+    // Refine = on the fixed node AND selected text matches what we fixed to.
+    // If refining, keep original. Otherwise, this is a new selection - update.
+    let isRefining = false;
+    if (undoState.canUndo && undoState.newNode && undoState.fixedText) {
+      try {
+        const isOnFixedNode =
+            range.startContainer === undoState.newNode ||
+            (undoState.newNode.contains && undoState.newNode.contains(range.startContainer));
+        isRefining = isOnFixedNode && text === undoState.fixedText;
+      } catch (e) {
+        isRefining = false;
+      }
+    }
+
+    if (!isRefining) {
       selectionState.originalText = text;
     }
     
@@ -363,6 +384,7 @@ function applyReplacement(replacementText) {
     undoState.end = payload.start + replacementText.length;
     undoState.kind = "text-control";
     undoState.replacedLength = replacementText.length;
+    undoState.fixedText = replacementText;  // Store what we replaced TO
     undoState.canUndo = true;
     
     const next = value.slice(0, payload.start) + replacementText + value.slice(payload.end);
@@ -385,6 +407,7 @@ function applyReplacement(replacementText) {
     undoState.kind = "content-editable";
     undoState.range = payload.range.cloneRange();
     undoState.replacedLength = replacementText.length;
+    undoState.fixedText = replacementText;  // Store what we replaced TO
     undoState.canUndo = true;
     
     const newNode = document.createTextNode(replacementText);
