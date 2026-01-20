@@ -7,7 +7,7 @@
 ![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
 ![Chrome](https://img.shields.io/badge/Chrome-MV3-yellow?style=for-the-badge&logo=googlechrome)
 
-**A powerful Chrome extension that fixes grammar, vocabulary, and style with a single keyboard shortcut using AI.**
+**A powerful Chrome/Edge extension that fixes grammar, vocabulary, and style with a single keyboard shortcut using AI.**
 
 [🌐 Website](https://melancholic-ksm.github.io/altd) • [🐙 GitHub](https://github.com/melancholic-ksm/altd) • [📥 Download](https://github.com/melancholic-ksm/altd/archive/refs/heads/main.zip) • [🔑 Get Groq API Key](https://console.groq.com/keys) • [📖 Tutorial](https://melancholic-ksm.github.io/altd/tutorial.html)
 
@@ -18,6 +18,7 @@
 ---
 
 ![ALTD](https://res.cloudinary.com/dv3cp6bda/image/upload/v1764749927/ScreenRecording2025-12-03133547online-video-cutter.com-ezgif.com-video-to-gif-converter_ktcoy8.gif)
+
 ## 🎯 What is Alt-D?
 
 Alt-D Smart Fix is a Chrome extension that lets you **select any text** in any input field, textarea, or content-editable region, press **`Alt + D`**, and instantly rewrite it using state-of-the-art AI models from [Groq](https://groq.com).
@@ -107,10 +108,16 @@ Whether you're writing emails, crafting social media posts, coding documentation
    - Generate an API key
    - Paste it in Alt-D settings
 
-### From Chrome Web Store
+### From Extension Stores
 
-*Coming soon!*
+**Extensionhub.io Profile:**
+- 🌐 [Install from ExtensionHub](https://www.extensionhub.io/extensions/1034)
 
+**Microsoft Edge Add-ons:**
+- 🌐 [Install for Edge](https://microsoftedge.microsoft.com/addons/detail/lhhfpdcaidjienjmpbbaoigjhcnhilbd)
+
+**Chrome Availability**
+- 💔 Currently its not available on chrome web store due to $5 fee to register extension account. Yet chrome extension developer way is primary way for particular browser.
 ---
 
 ## 🚀 Usage
@@ -316,7 +323,7 @@ Contributions are welcome! Here's how you can help:
 
 ```bash
 # Clone your fork
-git clone https://github.com/YOUR_USERNAME/altd.git
+git clone https://github.com/melancholic-ksm/altd.git
 cd altd
 
 # Load in Chrome (see Installation)
@@ -333,7 +340,7 @@ cd altd
 - ☐ **Per-Site Overrides** — Custom settings for specific sites
 - ☐ **Context Menu** — Right-click to fix text
 - ☐ **Multiple Languages** — Support for non-English text
-- ☐ **Chrome Web Store** — Official release
+- ☐ **Edge Addons Official release** — Official release
 
 ---
 
@@ -412,6 +419,24 @@ SOFTWARE.
 - [Chrome Extensions](https://developer.chrome.com/docs/extensions/) — MV3 documentation
 - All contributors and users!
 
+### Special Thanks
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/kuzmany">
+        <img src="https://avatars.githubusercontent.com/u/462477?s=64&v=4" width="64px;" alt="kuzmany"/>
+        <br />
+        <sub><b>kuzmany</b></sub>
+      </a>
+      <br />
+      <a href="https://github.com/melancholic-ksm/altd/commit/8b9632b4d0a96e53ebaad9133382f9efc8a2a819" title="Code">💻</a>
+    </td>
+  </tr>
+</table>
+
+Special thanks to [kuzmany](https://github.com/kuzmany) for their valuable contribution to the project! 🎉
+
 ---
 
 <div align="center">
@@ -423,5 +448,3 @@ SOFTWARE.
 [🌐 Website](https://melancholic-ksm.github.io/altd) • [Report Bug](https://github.com/melancholic-ksm/altd/issues) • [Request Feature](https://github.com/melancholic-ksm/altd/issues) • [Contribute](https://github.com/melancholic-ksm/altd/pulls)
 
 </div>
-
-
